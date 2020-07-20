@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+.small-text {
+  font-size: $small-text-font-size;
+  color: $small-text-color;
+}
+
+.title-text {
+  font-size: $title-font-size;
+  font-weight: $title-font-weight;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
