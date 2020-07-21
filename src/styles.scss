@@ -11,5 +11,19 @@
   font-weight: $title-font-weight;
 }
 
+.ng-fa-icon {
+  margin-right: 0.4em;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  line-height: 60px;
+  background-color: $footer-background-color;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

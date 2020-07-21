@@ -18,7 +18,7 @@ import {CarListComponent} from './car-list.component';
     NgbCarouselModule,
     EffectsModule.forFeature([CarEffect])
   ],
-  exports: [CarListComponent],
+  exports: [CarListComponent, CarDetailComponent],
   providers: [CarService]
 })
 export class CarListModule {

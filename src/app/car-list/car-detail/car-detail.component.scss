@@ -1,0 +1,24 @@
+@import "~src/variables";
+
+.car-detail {
+  &-equipment-item {
+    @include media-breakpoint-down(md) {
+      width: 30% !important;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 50% !important;
+    }
+  }
+
+  &-company-info {
+    @include media-breakpoint-down(md) {
+      .title-text {
+        line-height: 1;
+      }
+      .small-text {
+        line-height: 0;
+      }
+    }
+  }
+}

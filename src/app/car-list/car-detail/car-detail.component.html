@@ -1,1 +1,131 @@
-<p>car-detail works!</p>
+<ng-template #smallImages>
+  <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+  <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+  <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+</ng-template>
+
+<ng-template #contactButtons>
+  <div class="btn-toolbar flex-nowrap">
+    <button type="button" class="btn w-50 btn-outline-primary">
+      <fa-icon [icon]="faMail"></fa-icon>
+      Mail
+    </button>
+    <button type="button" class="btn w-50 btn-outline-primary ml-1">
+      <fa-icon [icon]="faCall"></fa-icon>
+      Call
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #seller>
+  <div class="col d-md-none d-lg-flex d-sm-flex">
+    <p class="title-text">Seller</p>
+  </div>
+</ng-template>
+
+<ng-template #companyInfo>
+  <p class="title-text">Company Name</p>
+  <p class="small-text">Name Surename</p>
+</ng-template>
+
+<div class="container car-detail-container">
+  <div class="row row-cols-lg-2 row-cols-md-1 row-cols-1">
+    <div class="col car-detail-images">
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col"><img [src]="data.sourcePath" class="img-fluid" alt="Responsive image"></div>
+        <div class="col d-lg-none d-md-flex">
+          <ng-template [ngTemplateOutlet]="smallImages"></ng-template>
+        </div>
+      </div>
+      <div class="row row-cols-1">
+        <div class="col d-md-none d-lg-flex">
+          <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+          <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+          <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row row-cols-1">
+        <div class="col">
+          <p class="title-text">Make Model Version</p>
+        </div>
+      </div>
+      <div class="row row-cols-lg-1 row-cols-md-3">
+        <div class="col">
+          <fa-icon [icon]="faCalendar"></fa-icon>
+          <span class="small-text">09.2019</span>
+        </div>
+        <div class="col text-lg-left text-md-center">
+          <fa-icon [icon]="faRoad"></fa-icon>
+          <span class="small-text">20.000KM</span>
+        </div>
+        <div class="col title-text text-lg-left text-md-right">
+          <p>1'234.-CHF</p>
+        </div>
+      </div>
+      <div class="row row-cols-1 d-none d-lg-flex">
+        <ng-template [ngTemplateOutlet]="seller"></ng-template>
+        <div class="col car-detail-company-info">
+          <ng-template [ngTemplateOutlet]="companyInfo"></ng-template>
+        </div>
+        <div class="col">
+          <ng-template [ngTemplateOutlet]="contactButtons"></ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-1 mt-3">
+    <div class="col car-detail-equipment">
+      <div class="row row-cols-1">
+        <div class="col">
+          <p class="title-text">Equipment</p>
+        </div>
+        <div class="col">
+          <ul class="small-text">
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row row-cols-1">
+        <div class="col">
+          <p class="title-text">Description</p>
+        </div>
+        <div class="col">
+          <p class="small-text">Contextual classes also work with .list-group-item-action. Note the addition of the
+            hover styles here not
+            present in the previous example. Also supported is the .active state; apply it to indicate an active
+            selection on a contextual list group item.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-md-none d-sm-flex row-cols-1 mt-3">
+    <ng-template [ngTemplateOutlet]="seller"></ng-template>
+    <div class="col car-detail-company-info">
+      <ng-template [ngTemplateOutlet]="companyInfo"></ng-template>
+    </div>
+  </div>
+</div>
+<footer class="footer d-lg-none">
+  <div class="container">
+    <div class="row row-cols-md-2">
+      <div class="col">
+        <ng-template [ngTemplateOutlet]="contactButtons"></ng-template>
+      </div>
+      <div class="col d-none d-md-flex flex-md-column car-detail-company-info">
+        <ng-template [ngTemplateOutlet]="companyInfo"></ng-template>
+      </div>
+    </div>
+  </div>
+</footer>
