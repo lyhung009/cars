@@ -4,11 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "npm i && concurrently \"json-server --watch DB.json\" \"npm run start\"",
+    "dev": "npm i && concurrently \"json-server --watch DB.json\" \"npm run dev:ssr\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev:ssr": "ng run cars:serve-ssr",
+    "serve:ssr": "node dist/cars/server/main.js",
+    "build:ssr": "ng build --prod && ng run cars:server:production",
+    "prerender": "ng run cars:prerender"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +24,7 @@
     "@angular/localize": "~10.0.3",
     "@angular/platform-browser": "~10.0.3",
     "@angular/platform-browser-dynamic": "~10.0.3",
+    "@angular/platform-server": "~10.0.3",
     "@angular/router": "~10.0.3",
     "@fortawesome/angular-fontawesome": "^0.7.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -29,7 +34,9 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@ngrx/effects": "^9.2.0",
     "@ngrx/store": "^9.2.0",
+    "@nguniversal/express-engine": "^10.0.1",
     "bootstrap": "^4.5.0",
+    "express": "^4.15.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -38,6 +45,8 @@
     "@angular-devkit/build-angular": "~0.1000.2",
     "@angular/cli": "~10.0.2",
     "@angular/compiler-cli": "~10.0.3",
+    "@nguniversal/builders": "^10.0.1",
+    "@types/express": "^4.17.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "concurrently": "^5.2.0",
