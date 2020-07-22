@@ -9,29 +9,31 @@
         </div>
         <div class="col car-info-km">
           <fa-icon [icon]="faRoad"></fa-icon>
-          <span class="small-text">20.000KM</span>
+          <span class="small-text">{{data.mileage}}KM</span>
         </div>
       </div>
       <div class="row row-cols-1 d-md-none">
         <div class="col">
-          <span class="small-text">09.2019 | </span> <span class="small-text">20.000KM</span>
+          <span class="small-text">09.2019 | </span> <span class="small-text">{{data.mileage}}KM</span>
         </div>
       </div>
     </div>
     <div class="col-12 car-rating order-0 order-md-1">
       <div class="row row-cols-2">
         <div class="col car-rating-plate title-text">1'234.-CHF</div>
-        <div class="col car-rating-star">4 stars</div>
+        <div class="col car-rating-star">{{data.rating.toFixed(2)}} / {{data.voted}} reviewers</div>
       </div>
     </div>
-    <div class="col-12 car-day order-2 order-md-2 text-right small-text">01.01.2019</div>
+    <div class="col-12 car-day order-2 position-absolute order-md-2 text-right small-text">01.01.2019</div>
   </div>
 </ng-template>
 
 <!--Title template -->
 <ng-template #title>
   <div class="row row-cols-2">
-    <div class="col car-title-text title-text">{{data.make}}</div>
+    <a routerLink="/carousel/detail/{{data.id}}">
+      <div class="col car-title-text title-text">{{data.make}}</div>
+    </a>
     <div class="col car-title-heart text-right">
       <fa-icon [icon]="data.liked ?faStarLiked: faStarDisliked"></fa-icon>
     </div>
@@ -39,13 +41,21 @@
 </ng-template>
 
 
-<div class="container car-container">
-  <div class="row flex-md-row flex-sm-column">
+<div class="container-fluid car-container">
+  <div class="row flex-md-row flex-sm-column p-1">
     <div class="col-sm-12 order-0 car-title d-md-none mb-1">
       <ng-container [ngTemplateOutlet]="title"></ng-container>
     </div>
     <div class="col-sm-12 order-1 order-md-0 col-md-3">
-      <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+      <ngb-carousel [interval]="0" *ngIf="times.length">
+        <ng-template ngFor [ngForOf]="times" let-item>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <app-picture [id]="data.id" [index]="item"></app-picture>
+            </div>
+          </ng-template>
+        </ng-template>
+      </ngb-carousel>
     </div>
     <div class="col-sm-12 order-2 d-md-none car-description">
       <ng-template [ngTemplateOutlet]="description"></ng-template>

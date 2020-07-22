@@ -11,12 +11,19 @@ import {CarListComponent} from './car-list.component';
 import {StoreModule} from '@ngrx/store';
 import {reducer} from './reducers/reducer';
 import {CarComponent} from './car/car.component';
+import {PictureComponent} from './picture/picture.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
-  declarations: [CarDetailComponent, CarListComponent, CarComponent],
+  declarations: [
+    CarDetailComponent,
+    CarListComponent,
+    CarComponent,
+    PictureComponent],
   imports: [
     CommonModule,
     UiToolkitModule,
+    RouterModule,
     FontAwesomeModule,
     NgbCarouselModule,
     StoreModule.forFeature('carsInfo', reducer),

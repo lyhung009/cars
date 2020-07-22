@@ -9,14 +9,7 @@ import {faEnvelope, faPhoneAlt, faRoad} from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./car-detail.component.scss']
 })
 export class CarDetailComponent implements OnInit {
-  @Input() data: Car = {
-    make: 'Make Model Version',
-    liked: true,
-    sourcePath: 'https://voz.vn/data/avatars/m/1669/1669159.jpg',
-    voted: 100,
-    mileage: 1000,
-    addedAt: ''
-  };
+  @Input() data: Car = {} as any;
 
   faCalendar = faCalendarAlt;
   faRoad = faRoad;
