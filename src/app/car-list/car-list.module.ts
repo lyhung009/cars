@@ -13,6 +13,7 @@ import {reducer} from './reducers/reducer';
 import {CarComponent} from './car/car.component';
 import {PictureComponent} from './picture/picture.component';
 import {RouterModule} from '@angular/router';
+import {LazyLoadImageModule} from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {RouterModule} from '@angular/router';
     PictureComponent],
   imports: [
     CommonModule,
+    LazyLoadImageModule,
     UiToolkitModule,
     RouterModule,
     FontAwesomeModule,

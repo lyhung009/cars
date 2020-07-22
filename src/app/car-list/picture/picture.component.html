@@ -1,34 +1,45 @@
 <div class="image-container">
   <picture>
-    <source type="image/webp" media="(min-width: 1200px)" [srcset]="pictureUrl + '/'+id+'/'+index+'-lg.webp'">
-    <source type="image/jpg" media="(min-width: 1200px)" [srcset]="pictureUrl + '/'+id+'/'+index+'-lg.jpg'">
+    <source type="image/webp" media="(min-width: 1200px)" [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-lg.webp'"
+            [defaultImage]="defaultPictureUrl">
+    <source type="image/jpg" media="(min-width: 1200px)" [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-lg.jpg'"
+            [defaultImage]="defaultPictureUrl">
 
     <source type="image/webp" media="(min-width: 992px) and (max-width: 1199px)"
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-xl.webp'">
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-xl.webp'">
     <source type="image/jpg" media="(min-width: 992px) and (max-width: 1199px)"
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-xl.jpg'">
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-xl.jpg'">
 
     <source type="image/webp"
             media="(min-width: 768px) and (max-width: 991px)"
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-md.webp'">
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-md.webp'">
     <source type="image/jpg"
-            media="(min-width: 768px) and (max-width: 991px) "
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-md.jpg'">
+            media="(min-width: 768px) and (max-width: 991px)"
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-md.jpg'">
 
     <source type="image/webp"
-            media="(min-width: 576px) and (max-width: 767px) "
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-sm.webp'">
+            media="(min-width: 576px) and (max-width: 767px)"
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-sm.webp'">
     <source type="image/jpg"
-            media="(min-width: 576px) and (max-width: 767px) "
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-sm.jpg'">
+            media="(min-width: 576px) and (max-width: 767px)"
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-sm.jpg'">
 
     <source type="image/webp"
             media="(max-width: 575px) and (orientation: portrait)"
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-sm.webp'">
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-sm.webp'">
     <source type="image/jpg"
             media="(max-width: 575px) and (orientation: portrait)"
-            [srcset]="pictureUrl + '/'+id+'/'+index+'-sm.jpg'">
+            [defaultImage]="defaultPictureUrl"
+            [attr.lazyLoad]="pictureUrl + '/'+id+'/'+index+'-sm.jpg'">
 
-    <img [alt]="index" [src]="pictureUrl + '/'+id+'/'+index+'.jpg'" [class]="'img-fluid'" style="width: 100%;">
+    <img [alt]="index" [defaultImage]="defaultPictureUrl" [lazyLoad]="pictureUrl + '/'+id+'/'+index+'.jpg'"
+         [class]="'img-fluid'" style="width: 100%;">
   </picture>
 </div>
