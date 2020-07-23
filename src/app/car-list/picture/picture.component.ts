@@ -7,11 +7,11 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PictureComponent implements OnInit {
-  readonly pictureUrl: string = '/assets/images';
-  readonly defaultPictureUrl: string = '/assets/images/default_image.png';
+  @Input() pictureUrl: string = '/assets/images';
   @Input() id: number;
   @Input() index: number;
 
+  readonly defaultPictureUrl: string = '/assets/images/default_image.png';
 
   constructor() {
   }

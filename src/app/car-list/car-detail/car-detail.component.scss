@@ -1,13 +1,17 @@
 @import "~src/variables";
 
 .car-detail {
-  &-equipment-item {
+  &-equipment-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100px;
     @include media-breakpoint-down(md) {
-      width: 30% !important;
+      height: 150px;
     }
 
     @include media-breakpoint-down(sm) {
-      width: 50% !important;
+      height: 200px;
     }
   }
 
@@ -19,6 +23,26 @@
       .small-text {
         line-height: 0;
       }
+    }
+  }
+
+  &-container {
+    .small-image {
+      width: 22%;
+      @include media-breakpoint-down(md) {
+        width: 48%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: 30%;
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+
+    .big-image {
+      margin-bottom: 0.5em;
     }
   }
 }

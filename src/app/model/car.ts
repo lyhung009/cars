@@ -9,4 +9,10 @@ export interface Car {
   carRegAt: string;
   addedAt: string;
   rating: number;
+  description: string;
+  sellerEmail: string;
+  sellerPhone: string;
+  sellerName: string;
+  sellerCompany: string;
+  equipment: string[];
 }

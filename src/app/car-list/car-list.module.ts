@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CarDetailComponent} from './car-detail/car-detail.component';
-import {UiToolkitModule} from '../ui-toolkit/ui-toolkit.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarService} from './services/car.service';
@@ -24,7 +23,6 @@ import {LazyLoadImageModule} from 'ng-lazyload-image';
   imports: [
     CommonModule,
     LazyLoadImageModule,
-    UiToolkitModule,
     RouterModule,
     FontAwesomeModule,
     NgbCarouselModule,

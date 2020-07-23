@@ -1,19 +1,19 @@
 <ng-template #smallImages>
-  <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
-  <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
-  <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+  <div class="small-image" *ngFor="let i of times | slice:1:5">
+    <app-picture [id]="data.id" [index]="i"></app-picture>
+  </div>
 </ng-template>
 
 <ng-template #contactButtons>
   <div class="btn-toolbar flex-nowrap">
-    <button type="button" class="btn w-50 btn-outline-primary">
+    <a type="button" [href]="'mailto:'+data.sellerEmail" class="btn w-50 btn-outline-primary">
       <fa-icon [icon]="faMail"></fa-icon>
       Mail
-    </button>
-    <button type="button" class="btn w-50 btn-outline-primary ml-1">
+    </a>
+    <a type="button" [href]="'tel:'+data.sellerPhone" class="btn w-50 btn-outline-primary ml-1">
       <fa-icon [icon]="faCall"></fa-icon>
       Call
-    </button>
+    </a>
   </div>
 </ng-template>
 
@@ -24,31 +24,35 @@
 </ng-template>
 
 <ng-template #companyInfo>
-  <p class="title-text">Company Name</p>
-  <p class="small-text">Name Surename</p>
+  <p class="title-text">{{data.sellerCompany}}</p>
+  <p class="small-text">{{data.sellerName}}</p>
 </ng-template>
 
 <div class="container car-detail-container">
   <div class="row row-cols-lg-2 row-cols-md-1 row-cols-1">
     <div class="col car-detail-images">
-      <div class="row row-cols-1 row-cols-md-2">
-        <div class="col"><img [src]="data.sourcePath" class="img-fluid" alt="Responsive image"></div>
-        <div class="col d-lg-none d-md-flex">
+      <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <div class="col">
+          <div class="big-image">
+            <app-picture [id]="data.id" [index]="1"></app-picture>
+          </div>
+        </div>
+        <div class="col d-lg-none justify-content-between d-flex flex-wrap">
           <ng-template [ngTemplateOutlet]="smallImages"></ng-template>
         </div>
       </div>
       <div class="row row-cols-1">
-        <div class="col d-md-none d-lg-flex">
-          <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
-          <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
-          <img [src]="data.sourcePath" class="img-fluid" alt="Responsive image">
+        <div class="col justify-content-between d-none d-lg-flex">
+          <div class="small-image" *ngFor="let i of times | slice:1:4">
+            <app-picture [id]="data.id" [index]="i"></app-picture>
+          </div>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="row row-cols-1">
         <div class="col">
-          <p class="title-text">Make Model Version</p>
+          <p class="title-text">{{data.make}}</p>
         </div>
       </div>
       <div class="row row-cols-lg-1 row-cols-md-3 flex-wrap-reverse flex-md-wrap">
@@ -82,18 +86,10 @@
           <p class="title-text">Equipment</p>
         </div>
         <div class="col">
-          <ul class="small-text">
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
-            <li class="d-inline-block w-25 car-detail-equipment-item">Item 1</li>
+          <ul class="pl-0 car-detail-equipment-list">
+            <ng-template ngFor [ngForOf]="data.equipment" let-item>
+              <li class="d-inline-block w-25 car-detail-equipment-item small-text">- {{item}}</li>
+            </ng-template>
           </ul>
         </div>
       </div>
@@ -102,10 +98,7 @@
           <p class="title-text">Description</p>
         </div>
         <div class="col">
-          <p class="small-text">Contextual classes also work with .list-group-item-action. Note the addition of the
-            hover styles here not
-            present in the previous example. Also supported is the .active state; apply it to indicate an active
-            selection on a contextual list group item.</p>
+          <p class="small-text">{{data.description}}</p>
         </div>
       </div>
     </div>
