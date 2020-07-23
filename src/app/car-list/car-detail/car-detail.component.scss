@@ -44,5 +44,11 @@
     .big-image {
       margin-bottom: 0.5em;
     }
+
+    .btn {
+      &-prev, &-next {
+        width: 7em;
+      }
+    }
   }
 }
