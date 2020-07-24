@@ -31,10 +31,14 @@
 <div class="container car-detail-container">
   <div class="row row-cols-2 mt-2 mb-2 justify-content-between">
     <div class="col">
-      <button class="btn btn-prev btn-outline-primary">< Previous</button>
+      <button *ngIf="prev > 0" class="btn btn-prev btn-outline-primary" (click)="clickPrev()"><
+        <span class="d-sm-none d-md-inline-block">Previous</span>
+      </button>
     </div>
     <div class="col text-right">
-      <button class="btn btn-next btn-outline-primary">> Next</button>
+      <button *ngIf="next <= total" class="btn btn-next btn-outline-primary" (click)="clickNext()">>
+        <span class="d-sm-none d-md-inline-block">Next</span>
+      </button>
     </div>
   </div>
   <div class="row row-cols-lg-2 row-cols-md-1 row-cols-1">

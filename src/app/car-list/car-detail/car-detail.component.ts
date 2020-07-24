@@ -4,6 +4,8 @@ import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
 import {faEnvelope, faPhoneAlt, faRoad} from '@fortawesome/free-solid-svg-icons';
 import {Store} from '@ngrx/store';
 import {CarState} from '../reducers/reducer';
+import {Title} from '@angular/platform-browser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-car-detail',
@@ -20,12 +22,30 @@ export class CarDetailComponent implements OnInit {
 
   times: number[] = [];
 
-  constructor(private store: Store<{ carsInfo: CarState }>) {
+  next = -1;
+  prev = -1;
+
+  total = 0;
+
+  constructor(private store: Store<{ carsInfo: CarState }>, private titleService: Title, private router: Router) {
     this.store.select(data => data.carsInfo)
       .subscribe(data => {
         this.data = data.carDetail;
         this.times = Array(this.data.imagesCount).fill(0).map((x, i) => i + 1);
+        this.titleService.setTitle(this.data.make);
+
+        this.total = data.total;
+        this.next = this.data.id + 1;
+        this.prev = this.data.id - 1;
       });
+  }
+
+  clickPrev(): void {
+    this.router.navigate(['/', this.prev]);
+  }
+
+  clickNext(): void {
+    this.router.navigate(['/', this.next]);
   }
 
   ngOnInit(): void {

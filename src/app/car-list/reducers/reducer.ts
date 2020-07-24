@@ -5,11 +5,13 @@ import {loadCarsSuccessfully, loadCarSuccessfully} from './actions';
 export interface CarState {
   cars: Car[];
   carDetail: Car;
+  total: number;
 }
 
 export const initialState: CarState = {
   cars: [],
-  carDetail: null
+  carDetail: null,
+  total: 0
 };
 
 const carReducer = createReducer(
@@ -17,12 +19,12 @@ const carReducer = createReducer(
   on(loadCarsSuccessfully, (state, {cars}) => ({
     ...state, cars
   })),
-  on(loadCarSuccessfully, (state, {carDetail}) => {
+  on(loadCarSuccessfully, (state, {carDetail, total}) => {
     const equipment = carDetail.equipment.concat();
     equipment.sort();
     const newCar = {...carDetail, equipment};
     return {
-      ...state, ...{carDetail: newCar}
+      ...state, ...{carDetail: newCar}, ...{total}
     };
   })
 );

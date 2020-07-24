@@ -5,6 +5,8 @@ import {LOAD_CAR, LOAD_CARS} from '../common/constants';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {EMPTY} from 'rxjs';
 import {loadCarsSuccessfully, loadCarSuccessfully} from '../reducers/actions';
+import {HttpResponse} from '@angular/common/http';
+import {Car} from '../../model/car';
 
 @Injectable()
 export class CarEffect {
@@ -22,7 +24,10 @@ export class CarEffect {
   loadCar$ = createEffect(() => this.action$.pipe(
     ofType(LOAD_CAR),
     switchMap((data: { id: number }) => this.carService.get(data.id).pipe(
-      map(carDetail => (loadCarSuccessfully({carDetail}))),
+      map((resp: HttpResponse<Car>) => {
+        const total = resp.headers.get('X-Total-Count');
+        return loadCarSuccessfully({carDetail: resp.body[0], total: parseInt(total, 10)});
+      }),
       catchError(() => EMPTY)
     ))
   ));
