@@ -23,10 +23,13 @@ export class CarResolverService implements Resolve<Car> {
         skip(1),
         take(1),
         mergeMap(info => {
+          if (!!info.error) {
+            return EMPTY;
+          }
+
           if (info.carDetail) {
             return of(info.carDetail);
           } else {
-            this.router.navigate(['']);
             return EMPTY;
           }
         })
