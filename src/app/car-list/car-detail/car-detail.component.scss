@@ -35,7 +35,7 @@
 
       @include media-breakpoint-down(sm) {
         width: 30%;
-        &:last-child {
+        &:nth-child(4) {
           display: none;
         }
       }
