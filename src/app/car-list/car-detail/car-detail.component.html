@@ -1,7 +1,41 @@
+<ng-template #galeryModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Galery</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ngb-carousel [interval]="0" *ngIf="times.length">
+      <ng-template ngFor [ngForOf]="times" let-item>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <ng-container [ngTemplateOutlet]="picture" [ngTemplateOutletContext]="{
+              id: data.id,
+              index:item
+            }"></ng-container>
+          </div>
+        </ng-template>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+  </div>
+</ng-template>
+
 <ng-template #smallImages>
   <div class="small-image" *ngFor="let i of times | slice:1:5">
-    <app-picture [id]="data.id" [index]="i"></app-picture>
+    <ng-container [ngTemplateOutlet]="picture" [ngTemplateOutletContext]="{
+      id: data.id,
+      index:i
+    }"></ng-container>
   </div>
+</ng-template>
+
+<ng-template #picture let-id="id" let-index="index">
+  <app-picture [id]="id" [index]="index" [clickable]="true"
+               (click)="openGalery(galeryModal)"></app-picture>
 </ng-template>
 
 <ng-template #contactButtons>
@@ -46,7 +80,10 @@
       <div class="row row-cols-1 row-cols-md-2 justify-content-center">
         <div class="col">
           <div class="big-image">
-            <app-picture [id]="data.id" [index]="1"></app-picture>
+            <ng-container [ngTemplateOutlet]="picture" [ngTemplateOutletContext]="{
+              id: data.id,
+              index: 1
+            }"></ng-container>
           </div>
         </div>
         <div class="col d-lg-none justify-content-between d-flex flex-wrap">
@@ -56,7 +93,10 @@
       <div class="row row-cols-1">
         <div class="col justify-content-between d-none d-lg-flex">
           <div class="small-image" *ngFor="let i of times | slice:1:4">
-            <app-picture [id]="data.id" [index]="i"></app-picture>
+            <ng-container [ngTemplateOutlet]="picture" [ngTemplateOutletContext]="{
+              id: data.id,
+              index:i
+            }"></ng-container>
           </div>
         </div>
       </div>
