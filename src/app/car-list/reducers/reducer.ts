@@ -1,17 +1,19 @@
 import {Car} from '../../model/car';
 import {Action, createReducer, on} from '@ngrx/store';
-import {loadCarsSuccessfully, loadCarSuccessfully} from './actions';
+import {loadCarsSuccessfully, loadCarSuccessfully, loadFailed} from './actions';
 
 export interface CarState {
   cars: Car[];
   carDetail: Car;
   total: number;
+  error: string;
 }
 
 export const initialState: CarState = {
   cars: [],
   carDetail: null,
-  total: 0
+  total: 0,
+  error: ''
 };
 
 const carReducer = createReducer(
@@ -26,7 +28,10 @@ const carReducer = createReducer(
     return {
       ...state, ...{carDetail: newCar}, ...{total}
     };
-  })
+  }),
+  on(loadFailed, (state, {error}) => ({
+    ...state, error
+  }))
 );
 
 export function reducer(state: CarState | undefined, action: Action): any {

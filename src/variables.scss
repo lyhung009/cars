@@ -2,6 +2,14 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 748px,
+  lg: 992px,
+  xl: 1200px
+);
+
 $title-font-size: 1.1rem;
 $title-font-weight: 500;
 

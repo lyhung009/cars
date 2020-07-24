@@ -3,8 +3,8 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {CarService} from '../services/car.service';
 import {LOAD_CAR, LOAD_CARS} from '../common/constants';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {EMPTY} from 'rxjs';
-import {loadCarsSuccessfully, loadCarSuccessfully} from '../reducers/actions';
+import {of} from 'rxjs';
+import {loadCarsSuccessfully, loadCarSuccessfully, loadFailed} from '../reducers/actions';
 import {HttpResponse} from '@angular/common/http';
 import {Car} from '../../model/car';
 
@@ -17,7 +17,9 @@ export class CarEffect {
     ofType(LOAD_CARS),
     switchMap(() => this.carService.getAll().pipe(
       map(cars => (loadCarsSuccessfully({cars}))),
-      catchError(() => EMPTY)
+      catchError(() => {
+        return of(loadFailed({error: 'Errors occurred when loading cars'}));
+      })
     ))
   ));
 
@@ -28,7 +30,9 @@ export class CarEffect {
         const total = resp.headers.get('X-Total-Count');
         return loadCarSuccessfully({carDetail: resp.body[0], total: parseInt(total, 10)});
       }),
-      catchError(() => EMPTY)
+      catchError(() => {
+        return of(loadFailed({error: 'Errors occurred when loading car'}));
+      })
     ))
   ));
 }

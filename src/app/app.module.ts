@@ -7,10 +7,11 @@ import {FilterComponent} from './filter/filter.component';
 import {CarListModule} from './car-list/car-list.module';
 import {FilterModule} from './filter/filter.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
+import {NotificationModule} from './notification/notification.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {EffectsModule} from '@ngrx/effects';
     CarListModule,
     FilterModule,
     FontAwesomeModule,
+    NotificationModule,
     NgbModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([])

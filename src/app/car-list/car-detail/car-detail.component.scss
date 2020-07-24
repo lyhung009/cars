@@ -48,6 +48,9 @@
     .btn {
       &-prev, &-next {
         width: 7em;
+        @include media-breakpoint-down(sm){
+          width: auto;
+        }
       }
     }
   }

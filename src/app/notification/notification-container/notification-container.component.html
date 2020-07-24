@@ -1,0 +1,13 @@
+<ngb-toast class="float-right"
+           *ngFor="let toast of notificationService.toasts"
+           [class]="toast.classname"
+           header="Error"
+           [delay]="toast.delay || 5000"
+           (hide)="notificationService.remove(toast)"
+>
+  <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+    <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
+  </ng-template>
+
+  <ng-template #text>{{ toast.textOrTpl }}</ng-template>
+</ngb-toast>

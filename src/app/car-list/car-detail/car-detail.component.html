@@ -32,12 +32,12 @@
   <div class="row row-cols-2 mt-2 mb-2 justify-content-between">
     <div class="col">
       <button *ngIf="prev > 0" class="btn btn-prev btn-outline-primary" (click)="clickPrev()"><
-        <span class="d-sm-none d-md-inline-block">Previous</span>
+        <span class="d-none d-md-inline-block">Previous</span>
       </button>
     </div>
     <div class="col text-right">
       <button *ngIf="next <= total" class="btn btn-next btn-outline-primary" (click)="clickNext()">>
-        <span class="d-sm-none d-md-inline-block">Next</span>
+        <span class="d-none d-md-inline-block">Next</span>
       </button>
     </div>
   </div>
