@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  @HostBinding('style.width') someField = '100% ';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

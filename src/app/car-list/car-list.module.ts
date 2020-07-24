@@ -13,6 +13,7 @@ import {CarComponent} from './car/car.component';
 import {PictureComponent} from './picture/picture.component';
 import {RouterModule} from '@angular/router';
 import {LazyLoadImageModule} from 'ng-lazyload-image';
+import {FilterModule} from './filter/filter.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {LazyLoadImageModule} from 'ng-lazyload-image';
     LazyLoadImageModule,
     RouterModule,
     FontAwesomeModule,
+    FilterModule,
     NgbCarouselModule,
     StoreModule.forFeature('carsInfo', reducer),
     EffectsModule.forFeature([CarEffect])

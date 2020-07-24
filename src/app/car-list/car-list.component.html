@@ -1,5 +1,40 @@
-<div class="container-fluid">
-  <ng-template ngFor [ngForOf]="cars" let-item>
-    <app-car [data]="item"></app-car>
-  </ng-template>
+<ng-template #filterModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><Filter></Filter></h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-filter></app-filter>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+  </div>
+</ng-template>
+<div class="container-fluid car-list-container mt-1">
+  <div class="row row-cols-md-1 d-lg-none">
+    <div class="col d-flex justify-content-md-end justify-content-between">
+      <button class="btn btn-outline-primary" type="button" (click)="openFilterModal(filterModal)">
+        <fa-icon [icon]="faFilter"></fa-icon>
+        <span class="d-none d-md-inline-block">Filter</span>
+      </button>
+      <button class="btn btn-outline-primary dropdown-toggle" type="button"
+              id="ToMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+        Sort by
+      </button>
+    </div>
+  </div>
+  <div class="row row-cols-lg-2 row-cols-1">
+    <div class="col col-lg-9">
+      <ng-template ngFor [ngForOf]="cars" let-item>
+        <app-car [data]="item"></app-car>
+      </ng-template>
+    </div>
+    <div class="col-lg-3 d-none d-lg-flex">
+      <app-filter></app-filter>
+    </div>
+  </div>
 </div>
+
