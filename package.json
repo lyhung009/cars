@@ -14,7 +14,7 @@
     "build:ssr": "ng build --prod && ng run cars:server:production",
     "prerender": "ng run cars:prerender",
     "postinstall": "npm run build:ssr",
-    "start:ssr": "concurrently \"json-server --watch DB.json --middlewares ./middleware.js\" \"npm run serve:ssr\""
+    "start:heroku": "concurrently \"json-server --watch DB.json --middlewares ./middleware.js\" \"npm run serve:ssr\""
   },
   "private": true,
   "dependencies": {
