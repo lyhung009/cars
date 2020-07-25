@@ -1,27 +1,60 @@
-# Cars
+# NGV - Coding Challange - Cars
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+## Solution
 
-## Development server
+####Technology used:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    - Angular10, AngularCLI for running the application.
+    - Bootstrap 4 for styling and ng-bootstrap for component.
+    - json-server for serving db.json.
+    - ngx-progressbar for Youtube-like progress bar.
+    - ng-lazyload-image for lazy load image.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Implementation of client:
+- Logo
 
-## Build
+      - Logo of the application should be in SVG format. On hover should change its color of every squear to a random one. Get back to black when not hovered:
+      I actually did not understand this requirement but it seems that we should change the color of each box in the logo. Currently, I'm reducing the opacity when hovering and back to black after hovering.</i>
+  
+  
+- Viewports: <b>Done</b><br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+      - a. Mobile from 0 to 748px. Container should be 100% width of screen.<br>
+      - b. Other view ports according to framework defaults or average world stats.<br>
+          
+- 2 pages each for 3 viweports (mobile, tablet, desktop):<b>Done</b>
 
-## Running unit tests
+      - List page
+          - "Filter button" should open modal with filters which are present on "Desktop" wireframe
+      - Details page
+        - Contact buttons should trigger respective actions: open email client, open phone dealer.
+        - Image click should open a "lightbox" gallery.
+        - Equipment items should be alphabetically orderd and displayed in order presented in wireframe.
+        
+-  Product cards must be fluid and take 100% of parent container. <b>Done</b>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+        - Carousel and image aspectratios should be preserved: 16:9 on mobile, 4:3 on other viewports.
+        - Images should be lazy.
+        - Image of optimal dimentions should be loaded.
+        - Use modern image formats with fallback.
+        (Prefered implementation of image requirements in `<picture>` with source queries and attributes)
+        - Application can be non-intercatvie but must load and display content with JavaScript disabled (Server Side Rendering).
+        - `html > head > title` must change its text during navigation to a title provided by api.
+        - Every fetch request should trigger YouTube-like loading bar indicator.
+        - Navigation patterns:
+          - Load data THEN navigate.
+            OR
+          - Load data AND navigate (if this one is choosen, "skeleton" placeholders should be provided).
+        - Application should use state management (MobX, Redux, Vuex, etc...).
+        - Should handle api reponse errors, and showing a popup/toast notification.
+        - Some other functionality is available on wireframe only.
+        - Client configuration should be stored in environment variables.
+#### API <b>Done</b> except using grapl
+    - Use json-server
+    - On every 7th request must return 500 status code response.
+    - Response payload should bandwidth friendly (be minimal) and return data present in a wireframe.
+    I would like to use grapql here but not at this time
+####. Running
+    - npm run dev for running application in dev mode
+    
