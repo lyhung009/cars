@@ -40,11 +40,11 @@
 
 <ng-template #contactButtons>
   <div class="btn-toolbar flex-nowrap">
-    <a type="button" [href]="'mailto:'+data.sellerEmail" class="btn w-50 btn-outline-primary">
+    <a type="button" [href]="'mailto:'+data.sellerEmail" class="btn w-50 btn-outline-success">
       <fa-icon [icon]="faMail"></fa-icon>
       Mail
     </a>
-    <a type="button" [href]="'tel:'+data.sellerPhone" class="btn w-50 btn-outline-primary ml-1">
+    <a type="button" [href]="'tel:'+data.sellerPhone" class="btn w-50 btn-outline-success ml-1">
       <fa-icon [icon]="faCall"></fa-icon>
       Call
     </a>
@@ -65,12 +65,12 @@
 <div class="container car-detail-container">
   <div class="row row-cols-2 mt-2 mb-2 justify-content-between">
     <div class="col">
-      <button *ngIf="prev > 0" class="btn btn-prev btn-outline-primary" (click)="clickPrev()"><
+      <button *ngIf="prev > 0" class="btn btn-prev btn-outline-success" (click)="clickPrev()"><
         <span class="d-none d-md-inline-block">Previous</span>
       </button>
     </div>
     <div class="col text-right">
-      <button *ngIf="next <= total" class="btn btn-next btn-outline-primary" (click)="clickNext()">>
+      <button *ngIf="next <= total" class="btn btn-next btn-outline-success" (click)="clickNext()">>
         <span class="d-none d-md-inline-block">Next</span>
       </button>
     </div>
