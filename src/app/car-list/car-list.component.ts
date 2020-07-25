@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {CarState} from './reducers/reducer';
-import {loadCars} from './reducers/actions';
 import {Car} from '../model/car';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {faFilter} from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +10,7 @@ import {faFilter} from '@fortawesome/free-solid-svg-icons';
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']
 })
-export class CarListComponent implements OnInit {
+export class CarListComponent {
 
   cars: Car[] = [];
 
@@ -22,10 +21,6 @@ export class CarListComponent implements OnInit {
       .subscribe(data => {
         this.cars = data.cars;
       });
-  }
-
-  ngOnInit(): void {
-    this.store.dispatch(loadCars());
   }
 
   openFilterModal(content): void {
