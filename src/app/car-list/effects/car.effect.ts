@@ -5,8 +5,6 @@ import {LOAD_CAR, LOAD_CARS} from '../common/constants';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {loadCarsSuccessfully, loadCarSuccessfully, loadFailed} from '../reducers/actions';
-import {HttpResponse} from '@angular/common/http';
-import {Car} from '../../model/car';
 
 @Injectable()
 export class CarEffect {
@@ -16,7 +14,15 @@ export class CarEffect {
   loadCars$ = createEffect(() => this.action$.pipe(
     ofType(LOAD_CARS),
     switchMap(() => this.carService.getAll().pipe(
-      map(cars => (loadCarsSuccessfully({cars}))),
+      map(cars => {
+        const newCars = cars.data.allItems.map(item => {
+          if (typeof item.id === 'string') {
+            item.id = parseInt(item.id, 10);
+          }
+          return item;
+        });
+        return loadCarsSuccessfully({cars: newCars});
+      }),
       catchError(() => {
         return of(loadFailed({error: 'Errors occurred when loading cars'}));
       })
@@ -26,9 +32,14 @@ export class CarEffect {
   loadCar$ = createEffect(() => this.action$.pipe(
     ofType(LOAD_CAR),
     switchMap((data: { id: number }) => this.carService.get(data.id).pipe(
-      map((resp: HttpResponse<Car>) => {
-        const total = resp.headers.get('X-Total-Count');
-        return loadCarSuccessfully({carDetail: resp.body[0], total: parseInt(total, 10)});
+      map((resp) => {
+        const newCars = resp.data.allItems.map(item => {
+          if (typeof item.id === 'string') {
+            item.id = parseInt(item.id, 10);
+          }
+          return item;
+        });
+        return loadCarSuccessfully({carDetail: newCars[0], total: 9});
       }),
       catchError(() => {
         return of(loadFailed({error: 'Errors occurred when loading car'}));

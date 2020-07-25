@@ -1,24 +1,58 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Car} from '../../model/car';
 import {Observable} from 'rxjs';
+import gql from 'graphql-tag';
+import {Apollo} from 'apollo-angular';
+import {ApolloQueryResult} from 'apollo-client';
 
 @Injectable()
 export class CarService {
   static readonly DATA_URL = 'http://localhost:3000/items';
   static readonly CAR_URL = 'http://localhost:3000/items?_start={start}&_end={end}';
 
-  constructor(private http: HttpClient) {
+  readonly getAllItems = gql`
+      query items {
+        allItems{
+          id
+          make
+          rating
+          voted
+          mileage
+          imagesCount
+         }
+      }
+    `;
 
+  readonly getItem = gql`
+      query items($start: Int!) {
+        allItems(page: $start, perPage: 1) {
+          id
+          make
+          sellerCompany
+          sellerName
+          equipment
+          description
+          sellerEmail
+          sellerPhone
+          imagesCount
+        }
+      }
+    `;
+
+  constructor(private apollo: Apollo) {
   }
 
-  getAll(): Observable<Car[]> {
-    return this.http.get<Car[]>(CarService.DATA_URL);
+  getAll(): Observable<ApolloQueryResult<any>> {
+    return this.apollo.query({
+      query: this.getAllItems
+    });
   }
 
-  get(id: number): Observable<HttpResponse<Car>> {
-    const url = CarService.CAR_URL.replace('{start}', (id - 1).toString())
-      .replace('{end}', id.toString());
-    return this.http.get<Car>(url, {observe: 'response'});
+  get(id: number): Observable<any> {
+    return this.apollo.query({
+      query: this.getItem,
+      variables: {
+        start: id - 1
+      }
+    });
   }
 }

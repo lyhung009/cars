@@ -5,11 +5,11 @@
 ####Technology used:
 
     - Angular10, AngularCLI for running the application.
+    - Ngrx for State management.
     - Bootstrap 4 for styling and ng-bootstrap for component.
-    - json-server for serving db.json.
+    - json-graphql-server for serving db.json.
     - ngx-progressbar for Youtube-like progress bar.
     - ng-lazyload-image for lazy load image.
-
 
 #### Implementation of client:
 - Logo
@@ -50,11 +50,10 @@
         - Should handle api reponse errors, and showing a popup/toast notification.
         - Some other functionality is available on wireframe only.
         - Client configuration should be stored in environment variables.
-#### API <b>Done</b> except using grapl
-    - Use json-server
+#### API <b>Done</b> 
     - On every 7th request must return 500 status code response.
     - Response payload should bandwidth friendly (be minimal) and return data present in a wireframe.
-    I would like to use grapql here but not at this time
+
 ####. Running
     - npm run dev for running application in dev mode
     

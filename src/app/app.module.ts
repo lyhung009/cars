@@ -11,6 +11,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {NotificationModule} from './notification/notification.module';
 import {NgProgressModule} from 'ngx-progressbar';
 import {NgProgressHttpModule} from 'ngx-progressbar/http';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NgProgressHttpModule} from 'ngx-progressbar/http';
     FontAwesomeModule,
     NotificationModule,
     StoreModule.forRoot({}),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    GraphQLModule
   ],
   bootstrap: [AppComponent]
 })

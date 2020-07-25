@@ -4,7 +4,7 @@ export interface Car {
   make: string;
   voted: number;
   mileage: number;
-  id: number;
+      id: number;
   imagesCount: number;
   carRegAt: string;
   addedAt: string;
