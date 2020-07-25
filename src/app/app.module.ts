@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {NotificationModule} from './notification/notification.module';
+import {NgProgressModule} from 'ngx-progressbar';
+import {NgProgressHttpModule} from 'ngx-progressbar/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import {NotificationModule} from './notification/notification.module';
   ],
   imports: [
     HttpClientModule,
+    NgProgressModule,
+    NgProgressHttpModule,
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     AppRoutingModule,
     CarListModule,

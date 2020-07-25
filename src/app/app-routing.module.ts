@@ -3,10 +3,15 @@ import {RouterModule, Routes} from '@angular/router';
 import {CarListComponent} from './car-list/car-list.component';
 import {CarDetailComponent} from './car-list/car-detail/car-detail.component';
 import {CarResolverService} from './car-list/services/car_resolver.service';
+import {CarsResolverService} from './car-list/services/cars_resolver.service';
 
 
 const routes: Routes = [
-  {path: '', component: CarListComponent},
+  {
+    path: '', component: CarListComponent, resolve: {
+      cars: CarsResolverService
+    }
+  },
   {
     path: ':id', component: CarDetailComponent, resolve: {
       car: CarResolverService
