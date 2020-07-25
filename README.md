@@ -2,7 +2,7 @@
 
 ## Solution
 
-####Technology used:
+#### Technology used:
 
     - Angular10, AngularCLI for running the application.
     - Ngrx for State management.
@@ -54,6 +54,6 @@
     - On every 7th request must return 500 status code response.
     - Response payload should bandwidth friendly (be minimal) and return data present in a wireframe.
 
-####. Running
-    - npm run dev for running application in dev mode
+#### Running
+    - npm run dev 
     
