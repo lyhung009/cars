@@ -1,0 +1,5 @@
+<ngb-rating [rate]="rate" placement="top" ngbTooltip="{{tooltip}}" [readonly]="true" [max]="5">
+  <ng-template let-fill="fill" let-index="index">
+    <span class="star" [class.filled]="index +1 <= rate">&#9733;</span>
+  </ng-template>
+</ngb-rating>

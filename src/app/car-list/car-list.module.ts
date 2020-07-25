@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CarDetailComponent} from './car-detail/car-detail.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarService} from './services/car.service';
 import {EffectsModule} from '@ngrx/effects';
 import {CarEffect} from './effects/car.effect';
@@ -14,6 +14,7 @@ import {PictureComponent} from './picture/picture.component';
 import {RouterModule} from '@angular/router';
 import {LazyLoadImageModule} from 'ng-lazyload-image';
 import {FilterModule} from './filter/filter.module';
+import {UiToolkitModule} from '../ui-toolkit/ui-toolkit.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import {FilterModule} from './filter/filter.module';
     LazyLoadImageModule,
     RouterModule,
     FontAwesomeModule,
+    NgbModule,
+    UiToolkitModule,
     FilterModule,
     NgbCarouselModule,
     StoreModule.forFeature('carsInfo', reducer),
