@@ -3,11 +3,12 @@ import {Observable} from 'rxjs';
 import gql from 'graphql-tag';
 import {Apollo} from 'apollo-angular';
 import {ApolloQueryResult} from 'apollo-client';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class CarService {
-  static readonly DATA_URL = 'http://localhost:3000/items';
-  static readonly CAR_URL = 'http://localhost:3000/items?_start={start}&_end={end}';
+  static readonly DATA_URL = environment.apiUrl + '/' + 'items';
+  static readonly CAR_URL = environment.apiUrl + '/' + 'items' + '?_start={start}&_end={end}';
 
   readonly getAllItems = gql`
       query items {
