@@ -7,6 +7,8 @@ if (environment === 'production') {
   apiURL = process.env.PRODUCTION_API_ENDPOINT;
 }
 
+console.log(environment, '  ', 'api: ', apiURL);
+
 const targetPath = `./src/environments/environment.prod.ts`;
 const envConfigFile = `
 export const environment = {
