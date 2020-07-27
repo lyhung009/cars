@@ -16,7 +16,7 @@
     "prerender": "ng run cars:prerender",
     "config": "ts-node ./src/config-env.ts",
     "postinstall": "npm run config -- && npm run build:ssr",
-    "heroku-postbuild": "npm run serve:ssr"
+    "start:heroku:": "npm run serve:ssr"
   },
   "private": true,
   "dependencies": {
