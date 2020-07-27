@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "npm run config -- && npm run server",
     "dev": "concurrently \"npm run server\" \"npm run dev:ssr\"",
+    "build": "ng build",
     "test": "ng test",
     "server": "node index.js",
     "lint": "ng lint",
